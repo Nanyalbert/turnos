@@ -25,102 +25,69 @@
 
 <div class="app-shell">
   <header class="topbar">
-    <div>
-      <div class="topbar-title">Central de turnos</div>
-      <div class="topbar-subtitle">Agenda, profesionales y disponibilidad</div>
-    </div>
-    <div class="top-actions">
-      <button class="btn secondary" id="todayBtn">Hoy</button>
-      <button class="btn primary" id="newAppointmentBtn"><span>＋</span> Nuevo turno</button>
-    </div>
+    <div><div class="topbar-title">Central de turnos</div><div class="topbar-subtitle">Agenda, profesionales y disponibilidad</div></div>
+    <div class="top-actions"><button class="btn secondary" id="todayBtn">Hoy</button><button class="btn primary" id="newAppointmentBtn"><span>＋</span> Nuevo turno</button></div>
   </header>
 
   <main class="main">
     <section class="view active" id="view-calendar">
       <div class="hero-row">
-        <div>
-          <span class="eyebrow">AGENDA GENERAL</span>
-          <h1 id="monthTitle"></h1>
-          <p>Organizá el día a día de todo el equipo desde un único lugar.</p>
-        </div>
-        <div class="segmented">
-          <button data-mode="day">Día</button>
-          <button data-mode="week" class="active">Semana</button>
-          <button data-mode="month">Mes</button>
-        </div>
+        <div><span class="eyebrow">AGENDA GENERAL</span><h1 id="monthTitle"></h1><p>Organizá el día a día de todo el equipo desde un único lugar.</p></div>
+        <div class="segmented"><button data-mode="day">Día</button><button data-mode="week" class="active">Semana</button><button data-mode="month">Mes</button></div>
       </div>
-
       <div class="stats-grid">
         <article class="stat-card"><span class="stat-label">Turnos de hoy</span><strong id="statToday">0</strong><small>Total agendado</small></article>
         <article class="stat-card"><span class="stat-label">Confirmados</span><strong id="statConfirmed">0</strong><small>Listos para atender</small></article>
         <article class="stat-card"><span class="stat-label">Pendientes</span><strong id="statPending">0</strong><small>Requieren confirmación</small></article>
         <article class="stat-card"><span class="stat-label">Ocupación</span><strong id="statOccupancy">—</strong><small>Sobre turnos de hoy</small></article>
       </div>
-
       <section class="panel calendar-panel">
         <div class="panel-toolbar">
-          <div class="filters">
-            <select id="professionalFilter"><option value="all">Todos los profesionales</option></select>
-            <select id="statusFilter"><option value="all">Todos los estados</option><option value="pending">Pendiente</option><option value="confirmed">Confirmado</option><option value="attended">Atendido</option><option value="cancelled">Cancelado</option><option value="no_show">Ausente</option></select>
-          </div>
-          <div class="date-nav"><button id="prevBtn" aria-label="Anterior">‹</button><button id="nextBtn" aria-label="Siguiente">›</button></div>
+          <div class="filters"><select id="professionalFilter"><option value="all">Todos los profesionales</option></select><select id="statusFilter"><option value="all">Todos los estados</option><option value="pending">Pendiente</option><option value="confirmed">Confirmado</option><option value="attended">Atendido</option><option value="cancelled">Cancelado</option><option value="no_show">Ausente</option></select></div>
+          <div class="date-nav"><button id="prevBtn">‹</button><button id="nextBtn">›</button></div>
         </div>
         <div id="calendarRoot" class="calendar-shell"></div>
       </section>
     </section>
 
     <section class="view" id="view-professionals">
-      <div class="hero-row">
-        <div><span class="eyebrow">EQUIPO</span><h1>Profesionales</h1><p>Gestioná quién atiende, su especialidad y la duración estándar de cada turno.</p></div>
-        <button class="btn primary" id="newProfessionalBtn"><span>＋</span> Nuevo profesional</button>
-      </div>
+      <div class="hero-row"><div><span class="eyebrow">EQUIPO</span><h1>Profesionales</h1><p>Gestioná quién atiende, su especialidad y la duración estándar de cada turno.</p></div><button class="btn primary" id="newProfessionalBtn"><span>＋</span> Nuevo profesional</button></div>
       <div id="professionalsGrid" class="cards-grid"></div>
     </section>
 
     <section class="view" id="view-settings">
-      <div class="hero-row">
-        <div><span class="eyebrow">CONFIGURACIÓN</span><h1>Disponibilidad</h1><p>Definí qué días y horarios puede recibir turnos cada profesional.</p></div>
-      </div>
-      <section class="panel settings-card">
-        <div class="settings-head"><div><span class="field-label">Profesional</span><select id="availabilityProfessional"></select></div><div class="settings-note">Los horarios que desactives dejan de aparecer en la reserva pública.</div></div>
-        <div id="availabilityEditor"></div>
-        <div class="settings-actions"><button class="btn primary" id="saveAvailabilityBtn">Guardar disponibilidad</button></div>
-      </section>
+      <div class="hero-row"><div><span class="eyebrow">CONFIGURACIÓN</span><h1>Disponibilidad</h1><p>Definí qué días y horarios puede recibir turnos cada profesional.</p></div></div>
+      <section class="panel settings-card"><div class="settings-head"><div><span class="field-label">Profesional</span><select id="availabilityProfessional"></select></div><div class="settings-note">Los horarios que desactives dejan de aparecer en la reserva pública.</div></div><div id="availabilityEditor"></div><div class="settings-actions"><button class="btn primary" id="saveAvailabilityBtn">Guardar disponibilidad</button></div></section>
     </section>
   </main>
 </div>
 
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="appointment-drawer" id="appointmentDrawer" aria-hidden="true">
+  <div class="drawer-head"><div><span class="eyebrow">DETALLE DEL TURNO</span><h2 id="drawerPatient">Paciente</h2></div><button class="drawer-close" id="closeDrawer">×</button></div>
+  <div class="drawer-status-row"><span class="status-pill" id="drawerStatus"></span><span class="source-pill" id="drawerSource"></span></div>
+  <div class="drawer-main">
+    <div class="detail-block"><span>Fecha y hora</span><strong id="drawerDateTime"></strong></div>
+    <div class="detail-grid"><div class="detail-block"><span>Profesional</span><strong id="drawerProfessional"></strong></div><div class="detail-block"><span>Servicio</span><strong id="drawerService"></strong></div></div>
+    <div class="detail-block"><span>WhatsApp</span><a id="drawerPhone" href="#" target="_blank"></a></div>
+    <div class="detail-block"><span>Observaciones</span><p id="drawerNotes">Sin observaciones.</p></div>
+  </div>
+  <div class="drawer-actions">
+    <button class="quick-action confirm" data-status-action="confirmed">✓ Confirmar</button>
+    <button class="quick-action attended" data-status-action="attended">Atendido</button>
+    <button class="quick-action" id="rescheduleBtn">Reprogramar</button>
+    <button class="quick-action danger" data-status-action="cancelled">Cancelar</button>
+  </div>
+</aside>
+
 <div class="modal-backdrop" id="appointmentModal">
-  <div class="modal">
-    <button class="modal-close" data-close="appointmentModal">×</button>
-    <span class="eyebrow">NUEVO TURNO</span><h2>Reservar horario</h2><p class="modal-copy">Cargá los datos esenciales. Después podremos automatizar la confirmación por WhatsApp.</p>
-    <form id="appointmentForm" class="form-grid">
-      <label>Profesional<select name="professionalId" required></select></label>
-      <label>Fecha<input name="date" type="date" required></label>
-      <label>Hora<input name="time" type="time" required></label>
-      <label>Duración<select name="duration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label>
-      <label>Nombre y apellido<input name="patientName" required></label>
-      <label>WhatsApp<input name="phone" required placeholder="351..."></label>
-      <label class="full">Servicio<input name="service" required placeholder="Ej. Contactología"></label>
-      <label class="full">Observaciones<textarea name="notes" rows="3" placeholder="Opcional"></textarea></label>
-      <button class="btn primary full" type="submit">Crear turno</button>
-    </form>
+  <div class="modal"><button class="modal-close" data-close="appointmentModal">×</button><span class="eyebrow">NUEVO TURNO</span><h2>Reservar horario</h2><p class="modal-copy">Cargá los datos esenciales. Después podremos automatizar la confirmación por WhatsApp.</p>
+    <form id="appointmentForm" class="form-grid"><label>Profesional<select name="professionalId" required></select></label><label>Fecha<input name="date" type="date" required></label><label>Hora<input name="time" type="time" required></label><label>Duración<select name="duration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label><label>Nombre y apellido<input name="patientName" required></label><label>WhatsApp<input name="phone" required placeholder="351..."></label><label class="full">Servicio<input name="service" required placeholder="Ej. Contactología"></label><label class="full">Observaciones<textarea name="notes" rows="3" placeholder="Opcional"></textarea></label><input type="hidden" name="editingId"><button class="btn primary full" type="submit" id="appointmentSubmitBtn">Crear turno</button></form>
   </div>
 </div>
 
 <div class="modal-backdrop" id="professionalModal">
-  <div class="modal small">
-    <button class="modal-close" data-close="professionalModal">×</button>
-    <span class="eyebrow">ALTA</span><h2>Nuevo profesional</h2><p class="modal-copy">Podés sumar contactología, óptica u otras agendas independientes.</p>
-    <form id="professionalForm" class="form-grid one-col">
-      <label>Nombre completo<input name="name" required></label>
-      <label>Especialidad / servicio<input name="specialty" required></label>
-      <label>Duración estándar<select name="slotDuration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label>
-      <button class="btn primary" type="submit">Crear profesional</button>
-    </form>
-  </div>
+  <div class="modal small"><button class="modal-close" data-close="professionalModal">×</button><span class="eyebrow">ALTA</span><h2>Nuevo profesional</h2><p class="modal-copy">Podés sumar contactología, óptica u otras agendas independientes.</p><form id="professionalForm" class="form-grid one-col"><label>Nombre completo<input name="name" required></label><label>Especialidad / servicio<input name="specialty" required></label><label>Duración estándar<select name="slotDuration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label><button class="btn primary" type="submit">Crear profesional</button></form></div>
 </div>
-<script src="assets/js/store.js"></script>
-<script src="assets/js/turnos.js"></script>
-</body>
-</html>
+<script src="assets/js/store.js"></script><script src="assets/js/turnos.js"></script>
+</body></html>
