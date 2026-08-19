@@ -12,21 +12,30 @@
 <main class="booking-shell">
   <header class="booking-brand"><div class="brand-mark">B</div><div><strong>BLACK ÓPTICA</strong><span>TURNOS ONLINE</span></div></header>
   <section class="booking-card">
-    <div class="progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+    <div class="progress" id="bookingProgress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+
     <div id="bookingStep1">
-      <span class="eyebrow">RESERVA ONLINE</span>
-      <h1>Elegí cuándo venir.</h1>
-      <p class="lead">Seleccioná la atención, el día y un horario disponible. Solo vas a ver espacios libres.</p>
+      <span class="eyebrow">PASO 1 DE 3</span>
+      <h1>Elegí el día.</h1>
+      <p class="lead">Seleccioná primero la atención y después una fecha disponible.</p>
       <label class="field">Profesional / atención<select id="bookingProfessional"></select></label>
-      <div class="booking-columns">
-        <div><div class="section-kicker">01</div><h3>Día disponible</h3><div id="availableDates" class="date-list"></div></div>
-        <div><div class="section-kicker">02</div><h3>Horario</h3><div id="availableSlots" class="slot-list"><p class="hint">Elegí un día para ver horarios.</p></div></div>
+      <div class="calendar-block">
+        <div class="calendar-head"><div><span class="section-kicker">DISPONIBILIDAD</span><h3>Próximos días</h3></div><span class="calendar-hint">Solo mostramos días con turnos libres</span></div>
+        <div id="availableDates" class="date-list calendar-dates"></div>
       </div>
     </div>
 
     <div id="bookingStep2" hidden>
+      <button class="back-link" id="backToDates">← Volver a fechas</button>
+      <span class="eyebrow">PASO 2 DE 3</span>
+      <h1>Elegí un horario.</h1>
+      <p class="lead" id="chosenDateLabel"></p>
+      <div class="slot-panel"><div class="slot-panel-head"><div><span class="section-kicker">HORARIOS DISPONIBLES</span><h3>¿A qué hora te queda mejor?</h3></div></div><div id="availableSlots" class="slot-list large-slots"></div></div>
+    </div>
+
+    <div id="bookingStep3" hidden>
       <button class="back-link" id="backToSlots">← Volver a horarios</button>
-      <span class="eyebrow">TUS DATOS</span>
+      <span class="eyebrow">PASO 3 DE 3</span>
       <h1>Confirmemos la reserva.</h1>
       <div id="selectedSummary" class="summary-card"></div>
       <form id="publicBookingForm">
@@ -38,13 +47,7 @@
       </form>
     </div>
 
-    <div id="bookingSuccess" hidden class="success">
-      <div class="check">✓</div>
-      <span class="eyebrow">LISTO</span>
-      <h1>Tu turno quedó reservado.</h1>
-      <p id="successSummary"></p>
-      <div class="success-note">Te enviaremos la confirmación y el recordatorio por WhatsApp.</div>
-    </div>
+    <div id="bookingSuccess" hidden class="success"><div class="check">✓</div><span class="eyebrow">LISTO</span><h1>Tu turno quedó reservado.</h1><p id="successSummary"></p><div class="success-note">Te enviaremos la confirmación y el recordatorio por WhatsApp.</div></div>
   </section>
   <footer>Black Óptica · Córdoba</footer>
 </main>
