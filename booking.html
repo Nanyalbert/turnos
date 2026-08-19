@@ -1,6 +1,52 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reservá tu turno | Black Óptica</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/booking.css"></head>
-<body><main class="booking-wrap"><div class="logo">BLACK <span>ÓPTICA</span></div><section class="booking-card"><div id="bookingStep1"><span class="eyebrow">TURNOS ONLINE</span><h1>Elegí cuándo venir.</h1><p>Seleccioná un día disponible y el horario que mejor te quede.</p><label>Profesional / atención<select id="bookingProfessional"></select></label><div class="booking-columns"><div><h3>Día disponible</h3><div id="availableDates" class="date-list"></div></div><div><h3>Horarios</h3><div id="availableSlots" class="slot-list"><p class="hint">Elegí un día para ver horarios.</p></div></div></div></div>
-<div id="bookingStep2" hidden><button class="back-link" id="backToSlots">← Volver</button><span class="eyebrow">DATOS DE LA RESERVA</span><h1>Ya casi está.</h1><p id="selectedSummary"></p><form id="publicBookingForm"><label>Nombre y apellido<input name="patientName" required></label><label>WhatsApp<input name="phone" required placeholder="351..."></label><label>Email <small>opcional</small><input name="email" type="email"></label><label>Observaciones <small>opcional</small><textarea name="notes" rows="3"></textarea></label><button class="primary" type="submit">Confirmar turno</button></form></div>
-<div id="bookingSuccess" hidden class="success"><div class="check">✓</div><h1>Turno reservado.</h1><p id="successSummary"></p><p class="hint">Te enviaremos la confirmación por WhatsApp.</p></div></section><footer>Black Óptica · Córdoba</footer></main><script src="assets/js/store.js"></script><script src="assets/js/booking.js"></script></body></html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reservá tu turno | Black Óptica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/booking.css">
+</head>
+<body>
+<div class="lens-field"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span></div>
+<main class="booking-shell">
+  <header class="booking-brand"><div class="brand-mark">B</div><div><strong>BLACK ÓPTICA</strong><span>TURNOS ONLINE</span></div></header>
+  <section class="booking-card">
+    <div class="progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+    <div id="bookingStep1">
+      <span class="eyebrow">RESERVA ONLINE</span>
+      <h1>Elegí cuándo venir.</h1>
+      <p class="lead">Seleccioná la atención, el día y un horario disponible. Solo vas a ver espacios libres.</p>
+      <label class="field">Profesional / atención<select id="bookingProfessional"></select></label>
+      <div class="booking-columns">
+        <div><div class="section-kicker">01</div><h3>Día disponible</h3><div id="availableDates" class="date-list"></div></div>
+        <div><div class="section-kicker">02</div><h3>Horario</h3><div id="availableSlots" class="slot-list"><p class="hint">Elegí un día para ver horarios.</p></div></div>
+      </div>
+    </div>
+
+    <div id="bookingStep2" hidden>
+      <button class="back-link" id="backToSlots">← Volver a horarios</button>
+      <span class="eyebrow">TUS DATOS</span>
+      <h1>Confirmemos la reserva.</h1>
+      <div id="selectedSummary" class="summary-card"></div>
+      <form id="publicBookingForm">
+        <label>Nombre y apellido<input name="patientName" required autocomplete="name"></label>
+        <label>WhatsApp<input name="phone" required placeholder="351..." autocomplete="tel"></label>
+        <label>Email <small>opcional</small><input name="email" type="email" autocomplete="email"></label>
+        <label>Observaciones <small>opcional</small><textarea name="notes" rows="3" placeholder="Contanos algo que debamos saber"></textarea></label>
+        <button class="primary" type="submit">Confirmar turno</button>
+      </form>
+    </div>
+
+    <div id="bookingSuccess" hidden class="success">
+      <div class="check">✓</div>
+      <span class="eyebrow">LISTO</span>
+      <h1>Tu turno quedó reservado.</h1>
+      <p id="successSummary"></p>
+      <div class="success-note">Te enviaremos la confirmación y el recordatorio por WhatsApp.</div>
+    </div>
+  </section>
+  <footer>Black Óptica · Córdoba</footer>
+</main>
+<script src="assets/js/store.js"></script><script src="assets/js/booking.js"></script>
+</body></html>
