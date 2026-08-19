@@ -1,4 +1,5 @@
 .public-booking-btn{display:none;text-decoration:none}
+.day-agenda{display:none}
 @media(max-width:820px){
   .topbar{gap:10px}
   .topbar-subtitle{display:none}
@@ -8,10 +9,55 @@
   #todayBtn{display:none}
   #newAppointmentBtn{padding:9px 11px}
   .public-booking-label{display:none}
+  .hero-row{margin-bottom:14px}
+  .hero-row h1{font-size:28px}
+  .hero-row p{display:none}
+  .segmented{width:100%;justify-content:space-between}
+  .segmented button{flex:1}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .stat-card{padding:13px;border-radius:13px}
+  .stat-card strong{font-size:26px}
+  .panel{border-radius:14px}
+  .panel-toolbar{padding:10px}
+  .filters{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .filters select{width:100%;min-width:0;font-size:11px}
+  .date-nav{width:100%;justify-content:flex-end}
+  .calendar-shell{min-height:0;overflow:visible}
+  .day-agenda{display:block;background:#0c0c0c}
+  .day-agenda-head{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid #232323;background:#101010}
+  .day-agenda-head>div:first-child{display:grid;grid-template-columns:auto auto;grid-template-areas:'weekday date' 'month month';align-items:end;column-gap:8px}
+  .day-agenda-head span{grid-area:weekday;color:#9a9a94;font-size:11px;text-transform:capitalize}
+  .day-agenda-head strong{grid-area:date;font-family:'Fraunces',Georgia,serif;font-size:30px;line-height:1}
+  .day-agenda-head small{grid-area:month;color:#5c5c58;font-size:10px;text-transform:capitalize;margin-top:3px}
+  .day-count{font-size:10px;color:#9a9a94;border:1px solid #333;border-radius:999px;padding:6px 9px}
+  .day-hour-row{display:grid;grid-template-columns:54px 1fr;border-bottom:1px solid #1d1d1d;min-height:54px}
+  .day-time{padding:11px 8px 0;color:#5c5c58;font-size:10px;text-align:right}
+  .day-hour-content{border-left:1px solid #232323;padding:5px 7px}
+  .day-empty-slot{height:42px}
+  .day-appointment{width:100%;border:1px solid #2c2c2c;background:#141414;color:#f5f5f3;border-radius:11px;padding:10px 11px;display:grid;grid-template-columns:46px 1fr auto;gap:10px;align-items:center;text-align:left;cursor:pointer}
+  .day-appointment+.day-appointment{margin-top:5px}
+  .day-appointment.confirmed{border-color:#315241;background:#122019}
+  .day-appointment.pending{border-color:#5a4a2e;background:#201b12}
+  .day-appointment.attended{border-color:#383838;background:#181818}
+  .day-appointment.cancelled{opacity:.45}
+  .day-appointment.no_show{border-color:#56302e;background:#211413}
+  .day-appt-time{font-size:11px;font-weight:700}
+  .day-appt-main{min-width:0;display:grid;gap:2px}
+  .day-appt-main strong{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .day-appt-main span{font-size:10px;color:#9a9a94;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .day-appt-main small{font-size:9px;color:#5c5c58;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .day-appt-status{font-size:8px;color:#9a9a94;border:1px solid #333;border-radius:999px;padding:5px 7px;white-space:nowrap}
 }
 @media(max-width:480px){
   .topbar{padding:0 10px}
   .topbar-title{font-size:13px}
   .public-booking-btn{width:38px;height:38px;padding:0;border-radius:11px}
   #newAppointmentBtn{font-size:11px;padding:9px 10px}
+  .main{padding:16px 10px 28px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-card small{display:none}
+  .filters{grid-template-columns:1fr}
+  .day-hour-row{grid-template-columns:48px 1fr}
+  .day-appointment{grid-template-columns:42px 1fr}
+  .day-appt-status{grid-column:2;justify-self:start}
 }
