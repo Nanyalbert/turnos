@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/turnos.css">
+<link rel="stylesheet" href="assets/css/mobile.css?v=20260819-0144">
 </head>
 <body>
 <aside class="sidebar">
@@ -26,7 +27,11 @@
 <div class="app-shell">
   <header class="topbar">
     <div><div class="topbar-title">Central de turnos</div><div class="topbar-subtitle">Agenda, profesionales y disponibilidad</div></div>
-    <div class="top-actions"><button class="btn secondary" id="todayBtn">Hoy</button><button class="btn primary" id="newAppointmentBtn"><span>＋</span> Nuevo turno</button></div>
+    <div class="top-actions">
+      <a class="btn secondary public-booking-btn" href="booking.html" target="_blank"><span>↗</span><span class="public-booking-label">Reserva pública</span></a>
+      <button class="btn secondary" id="todayBtn">Hoy</button>
+      <button class="btn primary" id="newAppointmentBtn"><span>＋</span> Nuevo turno</button>
+    </div>
   </header>
 
   <main class="main">
