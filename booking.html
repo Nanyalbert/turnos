@@ -17,16 +17,23 @@
     <div id="bookingStep1">
       <span class="eyebrow">PASO 1 DE 3</span>
       <h1>Elegí el día.</h1>
-      <p class="lead">Seleccioná primero la atención y después una fecha disponible.</p>
+      <p class="lead">Seleccioná primero la atención y después una fecha disponible en el calendario.</p>
       <label class="field">Profesional / atención<select id="bookingProfessional"></select></label>
+
       <div class="calendar-block">
-        <div class="calendar-head"><div><span class="section-kicker">DISPONIBILIDAD</span><h3>Próximos días</h3></div><span class="calendar-hint">Solo mostramos días con turnos libres</span></div>
-        <div id="availableDates" class="date-list calendar-dates"></div>
+        <div class="month-nav">
+          <button type="button" id="prevMonth" aria-label="Mes anterior">‹</button>
+          <div><span class="section-kicker">DISPONIBILIDAD</span><h3 id="calendarMonthTitle"></h3></div>
+          <button type="button" id="nextMonth" aria-label="Mes siguiente">›</button>
+        </div>
+        <div class="weekday-row"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+        <div id="monthlyCalendar" class="monthly-calendar"></div>
+        <div class="calendar-legend"><span><i class="dot available"></i> Disponible</span><span><i class="dot selected"></i> Seleccionado</span></div>
       </div>
     </div>
 
     <div id="bookingStep2" hidden>
-      <button class="back-link" id="backToDates">← Volver a fechas</button>
+      <button class="back-link" id="backToDates">← Volver al calendario</button>
       <span class="eyebrow">PASO 2 DE 3</span>
       <h1>Elegí un horario.</h1>
       <p class="lead" id="chosenDateLabel"></p>
