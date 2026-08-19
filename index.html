@@ -1,54 +1,91 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Black Turnos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/turnos.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Turnos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/turnos.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><div class="brand-mark">B</div><div><strong>BLACK</strong><span>TURNOS</span></div></div>
-  <div class="top-actions"><button class="ghost" id="todayBtn">Hoy</button><button class="primary" id="newAppointmentBtn">+ Nuevo turno</button></div>
-</header>
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <button class="nav-item active" data-view="calendar">Calendario</button>
-      <button class="nav-item" data-view="professionals">Profesionales</button>
-      <button class="nav-item" data-view="settings">Disponibilidad</button>
-    </nav>
-    <div class="sidebar-footer"><a href="booking.html" target="_blank">Abrir reserva pública ↗</a></div>
-  </aside>
+<aside class="sidebar">
+  <div class="sidebar-brand"><div class="brand-dot">B</div><span>Black Enterprise</span></div>
+  <div class="sidebar-nav">
+    <div class="nav-label">Turnos</div>
+    <button class="nav-item active" data-view="calendar"><span class="nav-icon">▦</span><span>Calendario</span></button>
+    <button class="nav-item" data-view="professionals"><span class="nav-icon">◎</span><span>Profesionales</span></button>
+    <button class="nav-item" data-view="settings"><span class="nav-icon">⌁</span><span>Disponibilidad</span></button>
+    <div class="nav-separator"></div>
+    <a class="nav-item" href="booking.html" target="_blank"><span class="nav-icon">↗</span><span>Reserva pública</span></a>
+  </div>
+  <div class="sidebar-footer"><span class="status-dot"></span><span>Black Turnos</span><small>Central operativa</small></div>
+</aside>
+
+<div class="app-shell">
+  <header class="topbar">
+    <div>
+      <div class="topbar-title">Central de turnos</div>
+      <div class="topbar-subtitle">Agenda, profesionales y disponibilidad</div>
+    </div>
+    <div class="top-actions">
+      <button class="btn secondary" id="todayBtn">Hoy</button>
+      <button class="btn primary" id="newAppointmentBtn"><span>＋</span> Nuevo turno</button>
+    </div>
+  </header>
+
   <main class="main">
     <section class="view active" id="view-calendar">
-      <div class="page-head">
-        <div><span class="eyebrow">CENTRAL DE TURNOS</span><h1 id="monthTitle"></h1></div>
-        <div class="segmented"><button data-mode="day">Día</button><button class="active" data-mode="week">Semana</button><button data-mode="month">Mes</button></div>
+      <div class="hero-row">
+        <div>
+          <span class="eyebrow">AGENDA GENERAL</span>
+          <h1 id="monthTitle"></h1>
+          <p>Organizá el día a día de todo el equipo desde un único lugar.</p>
+        </div>
+        <div class="segmented">
+          <button data-mode="day">Día</button>
+          <button data-mode="week" class="active">Semana</button>
+          <button data-mode="month">Mes</button>
+        </div>
       </div>
-      <div class="filters">
-        <select id="professionalFilter"><option value="all">Todos los profesionales</option></select>
-        <select id="statusFilter"><option value="all">Todos los estados</option><option value="pending">Pendiente</option><option value="confirmed">Confirmado</option><option value="attended">Atendido</option><option value="cancelled">Cancelado</option><option value="no_show">Ausente</option></select>
-        <div class="date-nav"><button id="prevBtn">‹</button><button id="nextBtn">›</button></div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-label">Turnos de hoy</span><strong id="statToday">0</strong><small>Total agendado</small></article>
+        <article class="stat-card"><span class="stat-label">Confirmados</span><strong id="statConfirmed">0</strong><small>Listos para atender</small></article>
+        <article class="stat-card"><span class="stat-label">Pendientes</span><strong id="statPending">0</strong><small>Requieren confirmación</small></article>
+        <article class="stat-card"><span class="stat-label">Ocupación</span><strong id="statOccupancy">—</strong><small>Sobre turnos de hoy</small></article>
       </div>
-      <div id="calendarRoot" class="calendar-shell"></div>
+
+      <section class="panel calendar-panel">
+        <div class="panel-toolbar">
+          <div class="filters">
+            <select id="professionalFilter"><option value="all">Todos los profesionales</option></select>
+            <select id="statusFilter"><option value="all">Todos los estados</option><option value="pending">Pendiente</option><option value="confirmed">Confirmado</option><option value="attended">Atendido</option><option value="cancelled">Cancelado</option><option value="no_show">Ausente</option></select>
+          </div>
+          <div class="date-nav"><button id="prevBtn" aria-label="Anterior">‹</button><button id="nextBtn" aria-label="Siguiente">›</button></div>
+        </div>
+        <div id="calendarRoot" class="calendar-shell"></div>
+      </section>
     </section>
 
     <section class="view" id="view-professionals">
-      <div class="page-head"><div><span class="eyebrow">CONFIGURACIÓN</span><h1>Profesionales</h1></div><button class="primary" id="newProfessionalBtn">+ Profesional</button></div>
+      <div class="hero-row">
+        <div><span class="eyebrow">EQUIPO</span><h1>Profesionales</h1><p>Gestioná quién atiende, su especialidad y la duración estándar de cada turno.</p></div>
+        <button class="btn primary" id="newProfessionalBtn"><span>＋</span> Nuevo profesional</button>
+      </div>
       <div id="professionalsGrid" class="cards-grid"></div>
     </section>
 
     <section class="view" id="view-settings">
-      <div class="page-head"><div><span class="eyebrow">AGENDA</span><h1>Disponibilidad</h1></div></div>
-      <div class="settings-card">
-        <label>Profesional<select id="availabilityProfessional"></select></label>
-        <div id="availabilityEditor"></div>
-        <button class="primary" id="saveAvailabilityBtn">Guardar disponibilidad</button>
+      <div class="hero-row">
+        <div><span class="eyebrow">CONFIGURACIÓN</span><h1>Disponibilidad</h1><p>Definí qué días y horarios puede recibir turnos cada profesional.</p></div>
       </div>
+      <section class="panel settings-card">
+        <div class="settings-head"><div><span class="field-label">Profesional</span><select id="availabilityProfessional"></select></div><div class="settings-note">Los horarios que desactives dejan de aparecer en la reserva pública.</div></div>
+        <div id="availabilityEditor"></div>
+        <div class="settings-actions"><button class="btn primary" id="saveAvailabilityBtn">Guardar disponibilidad</button></div>
+      </section>
     </section>
   </main>
 </div>
@@ -56,17 +93,17 @@
 <div class="modal-backdrop" id="appointmentModal">
   <div class="modal">
     <button class="modal-close" data-close="appointmentModal">×</button>
-    <span class="eyebrow">NUEVO TURNO</span><h2>Reservar horario</h2>
+    <span class="eyebrow">NUEVO TURNO</span><h2>Reservar horario</h2><p class="modal-copy">Cargá los datos esenciales. Después podremos automatizar la confirmación por WhatsApp.</p>
     <form id="appointmentForm" class="form-grid">
       <label>Profesional<select name="professionalId" required></select></label>
       <label>Fecha<input name="date" type="date" required></label>
       <label>Hora<input name="time" type="time" required></label>
       <label>Duración<select name="duration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label>
       <label>Nombre y apellido<input name="patientName" required></label>
-      <label>WhatsApp<input name="phone" required placeholder="351..." /></label>
-      <label class="full">Servicio<input name="service" required placeholder="Ej. Contactología" /></label>
-      <label class="full">Observaciones<textarea name="notes" rows="3"></textarea></label>
-      <button class="primary full" type="submit">Crear turno</button>
+      <label>WhatsApp<input name="phone" required placeholder="351..."></label>
+      <label class="full">Servicio<input name="service" required placeholder="Ej. Contactología"></label>
+      <label class="full">Observaciones<textarea name="notes" rows="3" placeholder="Opcional"></textarea></label>
+      <button class="btn primary full" type="submit">Crear turno</button>
     </form>
   </div>
 </div>
@@ -74,12 +111,12 @@
 <div class="modal-backdrop" id="professionalModal">
   <div class="modal small">
     <button class="modal-close" data-close="professionalModal">×</button>
-    <span class="eyebrow">ALTA</span><h2>Nuevo profesional</h2>
+    <span class="eyebrow">ALTA</span><h2>Nuevo profesional</h2><p class="modal-copy">Podés sumar contactología, óptica u otras agendas independientes.</p>
     <form id="professionalForm" class="form-grid one-col">
       <label>Nombre completo<input name="name" required></label>
       <label>Especialidad / servicio<input name="specialty" required></label>
       <label>Duración estándar<select name="slotDuration"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label>
-      <button class="primary" type="submit">Crear profesional</button>
+      <button class="btn primary" type="submit">Crear profesional</button>
     </form>
   </div>
 </div>
