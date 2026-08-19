@@ -5,7 +5,7 @@
 <title>Reservá tu turno | Black Óptica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/booking.css?v=20260819-0127">
+<link rel="stylesheet" href="assets/css/booking.css?v=20260819-0137">
 </head>
 <body>
 <div class="lens-field"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span></div>
@@ -16,16 +16,20 @@
   </header>
 
   <section class="booking-card">
-    <div class="progress" id="bookingProgress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+    <div class="step-strip" id="bookingProgress">
+      <span class="step-dot active">1</span><i></i><span class="step-dot">2</span><i></i><span class="step-dot">3</span>
+    </div>
 
     <div id="bookingStep1">
-      <span class="eyebrow">PASO 1 DE 3</span>
-      <h1>Seleccioná un día</h1>
-      <p class="lead">Elegí la atención y después una fecha disponible.</p>
+      <div class="intro-block">
+        <span class="eyebrow">RESERVA ONLINE</span>
+        <h1>Seleccioná un día</h1>
+        <p class="lead">Elegí la atención y después una fecha disponible.</p>
+      </div>
 
-      <label class="field">Profesional / atención<select id="bookingProfessional"></select></label>
+      <label class="field service-field">Atención<select id="bookingProfessional"></select></label>
 
-      <div class="calendar-block calendly-layout">
+      <div class="calendar-block">
         <div class="month-nav">
           <button type="button" id="prevMonth" aria-label="Mes anterior">‹</button>
           <h3 id="calendarMonthTitle"></h3>
@@ -38,20 +42,21 @@
     </div>
 
     <div id="bookingStep2" hidden>
-      <button class="back-link" id="backToDates">← Volver al calendario</button>
-      <div class="step-head centered"><span class="eyebrow">PASO 2 DE 3</span><h1 id="chosenDayTitle"></h1><p id="chosenDateLabel" class="lead"></p></div>
+      <button class="back-link" id="backToDates">← Volver</button>
+      <div class="selected-date-head">
+        <h1 id="chosenDayTitle"></h1>
+        <p id="chosenDateLabel" class="lead"></p>
+      </div>
       <div class="timezone-row standalone"><span class="timezone-icon">◉</span><div><strong>Zona horaria</strong><span>Buenos Aires</span></div></div>
-      <div class="slot-panel calendly-slots">
-        <div class="slot-panel-head centered"><div><span class="section-kicker">HORARIOS DISPONIBLES</span><h3>Seleccioná una hora</h3><p id="slotDurationLabel" class="duration-copy"></p></div></div>
-        <div id="availableSlots" class="slot-list large-slots"></div>
-        <button type="button" id="continueFromTime" class="continue-btn" hidden>Siguiente</button>
+      <div class="slot-panel">
+        <div class="slot-panel-head"><h2>Seleccioná una hora</h2><p id="slotDurationLabel" class="duration-copy"></p></div>
+        <div id="availableSlots" class="slot-list"></div>
       </div>
     </div>
 
     <div id="bookingStep3" hidden>
-      <button class="back-link" id="backToSlots">← Volver a horarios</button>
-      <span class="eyebrow">PASO 3 DE 3</span>
-      <h1>Ingresá tus datos</h1>
+      <button class="back-link" id="backToSlots">← Volver</button>
+      <div class="details-head"><span class="eyebrow">ÚLTIMO PASO</span><h1>Ingresá tus datos</h1></div>
       <div id="selectedSummary" class="summary-card event-summary"></div>
       <form id="publicBookingForm">
         <label>Nombre y apellido<input name="patientName" required autocomplete="name"></label>
@@ -68,5 +73,5 @@
   </section>
   <footer>Black Óptica · Córdoba</footer>
 </main>
-<script src="assets/js/store.js?v=20260819-0127"></script><script src="assets/js/booking.js?v=20260819-0127"></script>
+<script src="assets/js/store.js?v=20260819-0137"></script><script src="assets/js/booking.js?v=20260819-0137"></script>
 </body></html>
